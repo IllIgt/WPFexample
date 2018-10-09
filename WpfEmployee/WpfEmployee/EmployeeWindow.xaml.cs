@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfEmployee
@@ -17,19 +18,16 @@ namespace WpfEmployee
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EmployeeWindow : Window
     {
-        public MainWindow()
+        public EmployeeWindow()
         {
             InitializeComponent();
         }
 
-        private void OnClickButton(object sender, RoutedEventArgs e)
+        private void OnButtonClick(object sender, RoutedEventArgs e)
         {
-            EmployeeWindow employeeWindow = new EmployeeWindow();
-            employeeWindow.Owner = this;
-            employeeWindow.DataContext = this.DataContext;
-            employeeWindow.Show();
+            var employee = DataContext as Employee;
         }
     }
 }

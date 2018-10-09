@@ -10,7 +10,13 @@
         <local:Company/>
     </Window.DataContext>
     <Grid>
-        <ListView HorizontalAlignment="Left" Height="213" Margin="99,75,0,0" VerticalAlignment="Top" Width="268" ItemsSource="{Binding Employees}">
+        <ListView VirtualizingPanel.IsVirtualizing="True"
+                  HorizontalAlignment="Left" 
+                  Height="213"
+                  Margin="99,75,0,0"
+                  VerticalAlignment="Top"
+                  Width="268"
+                  ItemsSource="{Binding Employees}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>

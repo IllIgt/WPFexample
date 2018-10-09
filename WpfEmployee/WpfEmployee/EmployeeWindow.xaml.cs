@@ -28,6 +28,8 @@ namespace WpfEmployee
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
             var employee = DataContext as Employee;
+            if (employee is null) return;
+
         }
     }
 }

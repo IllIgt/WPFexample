@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +25,10 @@ namespace WpfEmployee
             InitializeComponent();
         }
 
-        private void OnClickButton(object sender, RoutedEventArgs e)
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EmployeeWindow employeeWindow = new EmployeeWindow();
-            employeeWindow.Owner = this;
-            employeeWindow.DataContext = this.DataContext;
-            employeeWindow.Show();
+
         }
     }
 }

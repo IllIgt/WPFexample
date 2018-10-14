@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfEmployee
@@ -23,13 +22,6 @@ namespace WpfEmployee
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void OnButtonClick(object sender, RoutedEventArgs e)
-        {
-            var employee = DataContext as Employee;
-            if (employee is null) return;
-            employee.Salary *= 2;
         }
     }
 }

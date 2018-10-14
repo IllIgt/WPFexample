@@ -11,7 +11,9 @@
     </Window.DataContext>
 
     <Grid>
-        <ListView ItemsSource="{Binding Employees}">
+        <ListView ItemsSource="{Binding Employees}"
+                  VirtualizingPanel.IsVirtualizing="True"
+                  VirtualizingPanel.VirtualizationMode="Recycling">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
@@ -20,6 +22,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
     </Grid>
 </Window>

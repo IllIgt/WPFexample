@@ -15,11 +15,12 @@ namespace WpfEmployee
 
         public IEnumerable<Employee> Employees => _Employees;
 
-        public Department()
+        public Department() { }
+
+        public Department(ObservableCollection<Employee> employees)
         {
-            _Employees.Add(new Employee { Name = "Danilin", Age = 27, Salary = 50000 });
-            _Employees.Add(new Employee { Name = "Zubkov", Age = 23, Salary = 30000 });
-            _Employees.Add(new Employee { Name = "Aleksandrov", Age = 30, Salary = 90000 });
+            foreach(Employee employee in employees)
+                _Employees.Add(employee);
         }
     }
 }

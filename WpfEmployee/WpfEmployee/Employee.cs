@@ -7,24 +7,16 @@ using System.Threading.Tasks;
 
 namespace WpfEmployee
 {
-    class Employee : INotifyPropertyChanged
+    class Employee : ViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        private int _Id;
+        private string _Name;
+        private int _Age;
+        private decimal _Salary;
 
-        public string Name { get; set; }
-        public int Age { get; set; }
-        private decimal f_Salary;
-
-        public decimal Salary
-        {
-            get => f_Salary;
-            set
-            {
-                if (Equals(f_Salary, value)) return;
-                f_Salary = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Salary)));
-            }
-        }
-
+        public int Id { get => _Id; set => Set(ref _Id, value); }
+        public string Name { get => _Name; set => Set(ref _Name, value); }
+        public int Age { get => _Age; set => Set(ref _Age, value); }
+        public decimal Salary { get => _Salary; set => Set(ref _Salary, value) ; }
     }
 }

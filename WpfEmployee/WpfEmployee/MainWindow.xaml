@@ -7,32 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
-        <local:Employee Name="Ivanov" Age="18" Salary="27000"/>
+        <local:MainWindowViewModel/>
     </Window.DataContext>
-    <GroupBox Header ="Работник">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Имя"/>
-            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Name}"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="Возраст"/>
-            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Age}"/>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Зарплата"/>
-            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Salary}"/>
-            <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Top" 
-                    Padding="50,5" 
-                    Margin="50, 20"
-                    Click="OnButtonClick">Ok</Button>
-            </Grid>
-        </GroupBox>
+    <DockPanel>
+        <UniformGrid DockPanel.Dock="Bottom" Columns="3" Margin="10">
+            <Button Content="Add" Margin="10" Command="{Binding AddCommand}"/>
+            <Button Content="Remove" Margin="10" Command="{Binding RemoveCommand}"/>
+            <Button Content="Edit" Margin="10" Command="{Binding EditCommand}"/>
+        </UniformGrid>
+        <DataGrid ItemsSource="{Binding Dt}" SelectedItem="{Binding Path=SelectedEmployee, Mode=TwoWay}" AutoGenerateColumns="False" x:Name="employeeDataGrid" Grid.ColumnSpan="3">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn" Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn x:Name="fIOColumn" Header="Имя" Binding="{Binding Name}"/>
+                <DataGridTextColumn x:Name="birthdayColumn" Header="Возраст" Binding="{Binding Age}"/>
+                <DataGridTextColumn x:Name="salaryColumn" Header="Зарплата" Binding="{Binding Salary}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+      
+    </DockPanel>
 </Window>

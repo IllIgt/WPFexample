@@ -5,31 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfEmployee"
         mc:Ignorable="d"
-        Title="EmployeeWindow" Height="450" Width="800">
-    <GroupBox Header ="Работник">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Имя"/>
-            <TextBox Name ="tbName" Grid.Column="1" Grid.Row="0" Text="{Binding Name}"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="Возраст"/>
-            <TextBox Name ="tbAge" Grid.Column="1" Grid.Row="1" Text="{Binding Age}"/>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Зарплата"/>
-            <TextBox Name ="tbSalary" Grid.Column="1" Grid.Row="2" Text="{Binding Salary}"/>
-            <Button x:Name="ButtonSaveEmployee" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Top" 
-                    Padding="50,5" 
-                    Margin="50, 20"
-                    Click="OnButtonClick">Ok</Button>
-            </Grid>
-        </GroupBox>
+        Title="EditWindow" Height="300" Width="300" Loaded="Window_Loaded">
+    <Window.Resources>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="editGrid" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="ФИО:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="fIOTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Возраст:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="birthdayTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2"  VerticalAlignment="Center" Width="120"/>
+            <Label Content="Оклад:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <TextBox x:Name="salaryTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Button x:Name="saveButton" IsDefault="True" Content="Сохранить" Margin="10" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="75" Click="OnSaveButtonClick"/>
+        <Button x:Name="cancelButton" IsCancel="True" Content="Отменить" Margin="10" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="75" Click="OnCancelButtonClick"/>
+    </Grid>
 </Window>
+

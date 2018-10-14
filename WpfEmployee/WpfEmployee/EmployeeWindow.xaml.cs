@@ -1,35 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfEmployee
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class EmployeeWindow : Window
     {
-        public EmployeeWindow()
+        public DataRow ResultRow { get; set; }
+        public EmployeeWindow(DataRow dataRow)
         {
             InitializeComponent();
+            ResultRow = dataRow;
         }
-
-        private void OnButtonClick(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var employee = DataContext as Employee;
-            if (employee is null) return;
-
+            fIOTextBox.Text = ResultRow["Name"].ToString();
+            birthdayTextBox.Text = ResultRow["Age"].ToString();
+            salaryTextBox.Text = ResultRow["Salary"].ToString();
+        }
+        private void OnSaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            ResultRow["Name"] = fIOTextBox.Text;
+            ResultRow["Age"] = birthdayTextBox.Text;
+            ResultRow["Salary"] = salaryTextBox.Text;
+            DialogResult = true;
+        }
+        private void OnCancelButtonClick(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
         }
     }
 }
